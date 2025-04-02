@@ -18,7 +18,7 @@ public class Conexion implements IConexion {
     @Override
     public Conexion crearConexion() throws PersistenceExeption {
         try {
-            EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUnidadPersistencia");
+            EntityManagerFactory emf = Persistence.createEntityManagerFactory("ConexionPU");
             System.out.println("Conexión exitosa");
             emf.close();
         } catch (Exception e) {
