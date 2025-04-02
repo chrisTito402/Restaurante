@@ -34,6 +34,36 @@ public class Mesa implements Serializable {
     @OneToMany(mappedBy = "mesa")
     private List<Comanda> comandas;
 
+    public Mesa() {
+    }
+
+    public Mesa(Long id, int numero, List<Comanda> comandas) {
+        this.id = id;
+        this.numero = numero;
+        this.comandas = comandas;
+    }
+
+    public Mesa(int numero, List<Comanda> comandas) {
+        this.numero = numero;
+        this.comandas = comandas;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public List<Comanda> getComandas() {
+        return comandas;
+    }
+
+    public void setComandas(List<Comanda> comandas) {
+        this.comandas = comandas;
+    }
+
     public Long getId() {
         return id;
     }
@@ -64,7 +94,7 @@ public class Mesa implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Mesa[ id=" + id + " ]";
+        return "Mesa{" + "id=" + id + ", numero=" + numero + ", comandas=" + comandas + '}';
     }
-    
+
 }

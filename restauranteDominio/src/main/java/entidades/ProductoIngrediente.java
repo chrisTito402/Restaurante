@@ -38,6 +38,22 @@ public class ProductoIngrediente implements Serializable {
     @JoinColumn(name = "ingrediente_id")
     private Ingrediente ingrediente;
 
+    public ProductoIngrediente() {
+    }
+
+    public ProductoIngrediente(Long id, double cantidadRequerida, Producto producto, Ingrediente ingrediente) {
+        this.id = id;
+        this.cantidadRequerida = cantidadRequerida;
+        this.producto = producto;
+        this.ingrediente = ingrediente;
+    }
+
+    public ProductoIngrediente(double cantidadRequerida, Producto producto, Ingrediente ingrediente) {
+        this.cantidadRequerida = cantidadRequerida;
+        this.producto = producto;
+        this.ingrediente = ingrediente;
+    }
+
     public Long getId() {
         return id;
     }
@@ -68,7 +84,7 @@ public class ProductoIngrediente implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.ProductoIngrediente[ id=" + id + " ]";
+        return "ProductoIngrediente{" + "id=" + id + ", cantidadRequerida=" + cantidadRequerida + ", producto=" + producto + ", ingrediente=" + ingrediente + '}';
     }
     
 }

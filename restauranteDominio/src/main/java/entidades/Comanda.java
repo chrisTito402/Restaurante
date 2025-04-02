@@ -50,6 +50,86 @@ public class Comanda implements Serializable {
     @ManyToOne
     @JoinColumn(name = "mesa_id")
     private Mesa mesa;
+
+    public Comanda() {
+    }
+
+    public Comanda(Long id, String folio, String estado, LocalDateTime fechaYHora, double totalVenta, List<ComandaProducto> productos, clienteFrecuente cliente, Mesa mesa) {
+        this.id = id;
+        this.folio = folio;
+        this.estado = estado;
+        this.fechaYHora = fechaYHora;
+        this.totalVenta = totalVenta;
+        this.productos = productos;
+        this.cliente = cliente;
+        this.mesa = mesa;
+    }
+
+    public Comanda(String folio, String estado, LocalDateTime fechaYHora, double totalVenta, List<ComandaProducto> productos, clienteFrecuente cliente, Mesa mesa) {
+        this.folio = folio;
+        this.estado = estado;
+        this.fechaYHora = fechaYHora;
+        this.totalVenta = totalVenta;
+        this.productos = productos;
+        this.cliente = cliente;
+        this.mesa = mesa;
+    }
+
+    public String getFolio() {
+        return folio;
+    }
+
+    public void setFolio(String folio) {
+        this.folio = folio;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public LocalDateTime getFechaYHora() {
+        return fechaYHora;
+    }
+
+    public void setFechaYHora(LocalDateTime fechaYHora) {
+        this.fechaYHora = fechaYHora;
+    }
+
+    public double getTotalVenta() {
+        return totalVenta;
+    }
+
+    public void setTotalVenta(double totalVenta) {
+        this.totalVenta = totalVenta;
+    }
+
+    public List<ComandaProducto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<ComandaProducto> productos) {
+        this.productos = productos;
+    }
+
+    public clienteFrecuente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(clienteFrecuente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Mesa getMesa() {
+        return mesa;
+    }
+
+    public void setMesa(Mesa mesa) {
+        this.mesa = mesa;
+    }
     
     public Long getId() {
         return id;
@@ -81,7 +161,7 @@ public class Comanda implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Comanda[ id=" + id + " ]";
+        return "Comanda{" + "id=" + id + ", folio=" + folio + ", estado=" + estado + ", fechaYHora=" + fechaYHora + ", totalVenta=" + totalVenta + ", productos=" + productos + ", cliente=" + cliente + ", mesa=" + mesa + '}';
     }
-    
+
 }

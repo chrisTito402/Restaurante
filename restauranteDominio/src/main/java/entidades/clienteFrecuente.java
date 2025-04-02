@@ -42,6 +42,76 @@ public class clienteFrecuente implements Serializable {
     @OneToMany(mappedBy = "cliente")
     private List<Comanda> comandas;
 
+    public clienteFrecuente() {
+    }
+
+    public clienteFrecuente(Long id, String nombre, String telefono, String correo, Date fechaRegistro, int puntos, List<Comanda> comandas) {
+        this.id = id;
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.fechaRegistro = fechaRegistro;
+        this.puntos = puntos;
+        this.comandas = comandas;
+    }
+
+    public clienteFrecuente(String nombre, String telefono, String correo, Date fechaRegistro, int puntos, List<Comanda> comandas) {
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.fechaRegistro = fechaRegistro;
+        this.puntos = puntos;
+        this.comandas = comandas;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public Date getFechaRegistro() {
+        return fechaRegistro;
+    }
+
+    public void setFechaRegistro(Date fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
+    }
+
+    public int getPuntos() {
+        return puntos;
+    }
+
+    public void setPuntos(int puntos) {
+        this.puntos = puntos;
+    }
+
+    public List<Comanda> getComandas() {
+        return comandas;
+    }
+
+    public void setComandas(List<Comanda> comandas) {
+        this.comandas = comandas;
+    }
+
     public Long getId() {
         return id;
     }
@@ -72,7 +142,7 @@ public class clienteFrecuente implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.clienteFrecuente[ id=" + id + " ]";
+        return "clienteFrecuente{" + "id=" + id + ", nombre=" + nombre + ", telefono=" + telefono + ", correo=" + correo + ", fechaRegistro=" + fechaRegistro + ", puntos=" + puntos + ", comandas=" + comandas + '}';
     }
     
 }

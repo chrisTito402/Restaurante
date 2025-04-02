@@ -43,6 +43,66 @@ public class Producto implements Serializable {
     @OneToMany(mappedBy = "producto")
     private List<ComandaProducto> comandas;
 
+    public Producto() {
+    }
+
+    public Producto(Long id, String nombre, double precio, String tipo, List<ProductoIngrediente> ingredientes, List<ComandaProducto> comandas) {
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.tipo = tipo;
+        this.ingredientes = ingredientes;
+        this.comandas = comandas;
+    }
+
+    public Producto(String nombre, double precio, String tipo, List<ProductoIngrediente> ingredientes, List<ComandaProducto> comandas) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.tipo = tipo;
+        this.ingredientes = ingredientes;
+        this.comandas = comandas;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public List<ProductoIngrediente> getIngredientes() {
+        return ingredientes;
+    }
+
+    public void setIngredientes(List<ProductoIngrediente> ingredientes) {
+        this.ingredientes = ingredientes;
+    }
+
+    public List<ComandaProducto> getComandas() {
+        return comandas;
+    }
+
+    public void setComandas(List<ComandaProducto> comandas) {
+        this.comandas = comandas;
+    }
+
     public Long getId() {
         return id;
     }
@@ -73,7 +133,7 @@ public class Producto implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Producto[ id=" + id + " ]";
+        return "Producto{" + "id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", tipo=" + tipo + ", ingredientes=" + ingredientes + ", comandas=" + comandas + '}';
     }
-    
+
 }

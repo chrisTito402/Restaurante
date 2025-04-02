@@ -41,6 +41,66 @@ public class ComandaProducto implements Serializable {
     @ManyToOne
     @JoinColumn(name = "producto_id")
     private Producto producto;
+
+    public ComandaProducto() {
+    }
+
+    public ComandaProducto(Long id, int cantidadRequerida, double precioProducto, String comentario, Comanda comanda, Producto producto) {
+        this.id = id;
+        this.cantidadRequerida = cantidadRequerida;
+        this.precioProducto = precioProducto;
+        this.comentario = comentario;
+        this.comanda = comanda;
+        this.producto = producto;
+    }
+
+    public ComandaProducto(int cantidadRequerida, double precioProducto, String comentario, Comanda comanda, Producto producto) {
+        this.cantidadRequerida = cantidadRequerida;
+        this.precioProducto = precioProducto;
+        this.comentario = comentario;
+        this.comanda = comanda;
+        this.producto = producto;
+    }
+
+    public int getCantidadRequerida() {
+        return cantidadRequerida;
+    }
+
+    public void setCantidadRequerida(int cantidadRequerida) {
+        this.cantidadRequerida = cantidadRequerida;
+    }
+
+    public double getPrecioProducto() {
+        return precioProducto;
+    }
+
+    public void setPrecioProducto(double precioProducto) {
+        this.precioProducto = precioProducto;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    public Comanda getComanda() {
+        return comanda;
+    }
+
+    public void setComanda(Comanda comanda) {
+        this.comanda = comanda;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
     
     public Long getId() {
         return id;
@@ -72,7 +132,7 @@ public class ComandaProducto implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.ComandaProducto[ id=" + id + " ]";
+        return "ComandaProducto{" + "id=" + id + ", cantidadRequerida=" + cantidadRequerida + ", precioProducto=" + precioProducto + ", comentario=" + comentario + ", comanda=" + comanda + ", producto=" + producto + '}';
     }
     
 }

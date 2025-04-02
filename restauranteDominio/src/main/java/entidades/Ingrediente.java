@@ -38,6 +38,56 @@ public class Ingrediente implements Serializable {
     @OneToMany(mappedBy = "ingrediente")
     private List<ProductoIngrediente> productos;
 
+    public Ingrediente() {
+    }
+
+    public Ingrediente(Long id, String nombre, String unidadMedida, int stock, List<ProductoIngrediente> productos) {
+        this.id = id;
+        this.nombre = nombre;
+        this.unidadMedida = unidadMedida;
+        this.stock = stock;
+        this.productos = productos;
+    }
+
+    public Ingrediente(String nombre, String unidadMedida, int stock, List<ProductoIngrediente> productos) {
+        this.nombre = nombre;
+        this.unidadMedida = unidadMedida;
+        this.stock = stock;
+        this.productos = productos;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getUnidadMedida() {
+        return unidadMedida;
+    }
+
+    public void setUnidadMedida(String unidadMedida) {
+        this.unidadMedida = unidadMedida;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public List<ProductoIngrediente> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<ProductoIngrediente> productos) {
+        this.productos = productos;
+    }
+    
     public Long getId() {
         return id;
     }
@@ -68,7 +118,7 @@ public class Ingrediente implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Ingrediente[ id=" + id + " ]";
+        return "Ingrediente{" + "id=" + id + ", nombre=" + nombre + ", unidadMedida=" + unidadMedida + ", stock=" + stock + ", productos=" + productos + '}';
     }
     
 }
