@@ -10,7 +10,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.List;
@@ -29,7 +28,7 @@ public class Mesa implements Serializable {
     private Long id;
     
     @Column(name = "numero", nullable = false)
-    private int numero;
+    private Integer numero;
 
     @OneToMany(mappedBy = "mesa")
     private List<Comanda> comandas;
@@ -37,22 +36,22 @@ public class Mesa implements Serializable {
     public Mesa() {
     }
 
-    public Mesa(Long id, int numero, List<Comanda> comandas) {
+    public Mesa(Long id, Integer numero, List<Comanda> comandas) {
         this.id = id;
         this.numero = numero;
         this.comandas = comandas;
     }
 
-    public Mesa(int numero, List<Comanda> comandas) {
+    public Mesa(Integer numero, List<Comanda> comandas) {
         this.numero = numero;
         this.comandas = comandas;
     }
 
-    public int getNumero() {
+    public Integer getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(Integer numero) {
         this.numero = numero;
     }
 

@@ -9,7 +9,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
@@ -30,10 +29,10 @@ public class Ingrediente implements Serializable {
     
     @Column(name = "nombre", nullable = false, length = 200)
     private String nombre;
-    @Column(name = "unidadMedida", nullable = false, length = 10)
+    @Column(name = "unidad_medida", nullable = false, length = 10)
     private String unidadMedida;
     @Column(name = "stock", nullable = false)
-    private int stock;
+    private Integer stock;
 
     @OneToMany(mappedBy = "ingrediente")
     private List<ProductoIngrediente> productos;
@@ -41,7 +40,7 @@ public class Ingrediente implements Serializable {
     public Ingrediente() {
     }
 
-    public Ingrediente(Long id, String nombre, String unidadMedida, int stock, List<ProductoIngrediente> productos) {
+    public Ingrediente(Long id, String nombre, String unidadMedida, Integer stock, List<ProductoIngrediente> productos) {
         this.id = id;
         this.nombre = nombre;
         this.unidadMedida = unidadMedida;
@@ -49,7 +48,7 @@ public class Ingrediente implements Serializable {
         this.productos = productos;
     }
 
-    public Ingrediente(String nombre, String unidadMedida, int stock, List<ProductoIngrediente> productos) {
+    public Ingrediente(String nombre, String unidadMedida, Integer stock, List<ProductoIngrediente> productos) {
         this.nombre = nombre;
         this.unidadMedida = unidadMedida;
         this.stock = stock;
@@ -72,11 +71,11 @@ public class Ingrediente implements Serializable {
         this.unidadMedida = unidadMedida;
     }
 
-    public int getStock() {
+    public Integer getStock() {
         return stock;
     }
 
-    public void setStock(int stock) {
+    public void setStock(Integer stock) {
         this.stock = stock;
     }
 

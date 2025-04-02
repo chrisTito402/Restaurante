@@ -12,7 +12,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -35,17 +34,15 @@ public class Comanda implements Serializable {
     private String folio;
     @Column(name = "estado", nullable = false, length = 50)
     private String estado;
-    @Column(name = "fechaYHora", nullable = false)
+    @Column(name = "fecha_hora", nullable = false)
     private LocalDateTime fechaYHora;
-    @Column(name = "totalVenta", nullable = false)
-    private double totalVenta;
     
     @OneToMany(mappedBy = "comanda")
     private List<ComandaProducto> productos;
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
-    private clienteFrecuente cliente;
+    private ClienteFrecuente cliente;
 
     @ManyToOne
     @JoinColumn(name = "mesa_id")
@@ -54,22 +51,20 @@ public class Comanda implements Serializable {
     public Comanda() {
     }
 
-    public Comanda(Long id, String folio, String estado, LocalDateTime fechaYHora, double totalVenta, List<ComandaProducto> productos, clienteFrecuente cliente, Mesa mesa) {
+    public Comanda(Long id, String folio, String estado, LocalDateTime fechaYHora, List<ComandaProducto> productos, ClienteFrecuente cliente, Mesa mesa) {
         this.id = id;
         this.folio = folio;
         this.estado = estado;
         this.fechaYHora = fechaYHora;
-        this.totalVenta = totalVenta;
         this.productos = productos;
         this.cliente = cliente;
         this.mesa = mesa;
     }
 
-    public Comanda(String folio, String estado, LocalDateTime fechaYHora, double totalVenta, List<ComandaProducto> productos, clienteFrecuente cliente, Mesa mesa) {
+    public Comanda(String folio, String estado, LocalDateTime fechaYHora, List<ComandaProducto> productos, ClienteFrecuente cliente, Mesa mesa) {
         this.folio = folio;
         this.estado = estado;
         this.fechaYHora = fechaYHora;
-        this.totalVenta = totalVenta;
         this.productos = productos;
         this.cliente = cliente;
         this.mesa = mesa;
@@ -98,15 +93,7 @@ public class Comanda implements Serializable {
     public void setFechaYHora(LocalDateTime fechaYHora) {
         this.fechaYHora = fechaYHora;
     }
-
-    public double getTotalVenta() {
-        return totalVenta;
-    }
-
-    public void setTotalVenta(double totalVenta) {
-        this.totalVenta = totalVenta;
-    }
-
+    
     public List<ComandaProducto> getProductos() {
         return productos;
     }
@@ -115,11 +102,11 @@ public class Comanda implements Serializable {
         this.productos = productos;
     }
 
-    public clienteFrecuente getCliente() {
+    public ClienteFrecuente getCliente() {
         return cliente;
     }
 
-    public void setCliente(clienteFrecuente cliente) {
+    public void setCliente(ClienteFrecuente cliente) {
         this.cliente = cliente;
     }
 
@@ -161,7 +148,7 @@ public class Comanda implements Serializable {
 
     @Override
     public String toString() {
-        return "Comanda{" + "id=" + id + ", folio=" + folio + ", estado=" + estado + ", fechaYHora=" + fechaYHora + ", totalVenta=" + totalVenta + ", productos=" + productos + ", cliente=" + cliente + ", mesa=" + mesa + '}';
+        return "Comanda{" + "id=" + id + ", folio=" + folio + ", estado=" + estado + ", fechaYHora=" + fechaYHora + ", productos=" + productos + ", cliente=" + cliente + ", mesa=" + mesa + '}';
     }
 
 }

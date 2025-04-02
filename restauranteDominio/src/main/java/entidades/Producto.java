@@ -9,9 +9,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
@@ -33,7 +30,7 @@ public class Producto implements Serializable {
     @Column(name = "nombre", nullable = false, length = 200)
     private String nombre;
     @Column(name = "precio", nullable = false)
-    private double precio;
+    private Double precio;
     @Column(name = "tipo", nullable = false, length = 100)
     private String tipo;
 
@@ -46,7 +43,7 @@ public class Producto implements Serializable {
     public Producto() {
     }
 
-    public Producto(Long id, String nombre, double precio, String tipo, List<ProductoIngrediente> ingredientes, List<ComandaProducto> comandas) {
+    public Producto(Long id, String nombre, Double precio, String tipo, List<ProductoIngrediente> ingredientes, List<ComandaProducto> comandas) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
@@ -55,7 +52,7 @@ public class Producto implements Serializable {
         this.comandas = comandas;
     }
 
-    public Producto(String nombre, double precio, String tipo, List<ProductoIngrediente> ingredientes, List<ComandaProducto> comandas) {
+    public Producto(String nombre, Double precio, String tipo, List<ProductoIngrediente> ingredientes, List<ComandaProducto> comandas) {
         this.nombre = nombre;
         this.precio = precio;
         this.tipo = tipo;
@@ -71,11 +68,11 @@ public class Producto implements Serializable {
         this.nombre = nombre;
     }
 
-    public double getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
 

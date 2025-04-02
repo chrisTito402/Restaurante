@@ -28,9 +28,9 @@ public class ComandaProducto implements Serializable {
     private Long id;
     
     @Column(name = "cantidad", nullable = false)
-    private int cantidadRequerida;
+    private Integer cantidadRequerida;
     @Column(name = "precio", nullable = false)
-    private double precioProducto;
+    private Double precioProducto;
     @Column(name = "comentario", nullable = false, length = 200)
     private String comentario;
 
@@ -45,7 +45,7 @@ public class ComandaProducto implements Serializable {
     public ComandaProducto() {
     }
 
-    public ComandaProducto(Long id, int cantidadRequerida, double precioProducto, String comentario, Comanda comanda, Producto producto) {
+    public ComandaProducto(Long id, Integer cantidadRequerida, Double precioProducto, String comentario, Comanda comanda, Producto producto) {
         this.id = id;
         this.cantidadRequerida = cantidadRequerida;
         this.precioProducto = precioProducto;
@@ -54,7 +54,7 @@ public class ComandaProducto implements Serializable {
         this.producto = producto;
     }
 
-    public ComandaProducto(int cantidadRequerida, double precioProducto, String comentario, Comanda comanda, Producto producto) {
+    public ComandaProducto(Integer cantidadRequerida, Double precioProducto, String comentario, Comanda comanda, Producto producto) {
         this.cantidadRequerida = cantidadRequerida;
         this.precioProducto = precioProducto;
         this.comentario = comentario;
@@ -62,19 +62,19 @@ public class ComandaProducto implements Serializable {
         this.producto = producto;
     }
 
-    public int getCantidadRequerida() {
+    public Integer getCantidadRequerida() {
         return cantidadRequerida;
     }
 
-    public void setCantidadRequerida(int cantidadRequerida) {
+    public void setCantidadRequerida(Integer cantidadRequerida) {
         this.cantidadRequerida = cantidadRequerida;
     }
 
-    public double getPrecioProducto() {
+    public Double getPrecioProducto() {
         return precioProducto;
     }
 
-    public void setPrecioProducto(double precioProducto) {
+    public void setPrecioProducto(Double precioProducto) {
         this.precioProducto = precioProducto;
     }
 

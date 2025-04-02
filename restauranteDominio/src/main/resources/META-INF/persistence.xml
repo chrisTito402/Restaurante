@@ -2,13 +2,13 @@
 <persistence version="3.1" xmlns="https://jakarta.ee/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
   <persistence-unit name="ConexionPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-    <class>entidades.clienteFrecuente</class>
     <class>entidades.Comanda</class>
     <class>entidades.ComandaProducto</class>
     <class>entidades.Producto</class>
     <class>entidades.Ingrediente</class>
     <class>entidades.Mesa</class>
     <class>entidades.ProductoIngrediente</class>
+    <class>entidades.ClienteFrecuente</class>
     <properties>
       <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/restaurante?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="jakarta.persistence.jdbc.user" value="root"/>

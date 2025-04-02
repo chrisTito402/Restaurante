@@ -24,11 +24,11 @@ public class ProductoIngrediente implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @Column(name = "cantidad", nullable = false)
-    private double cantidadRequerida;
+    private Double cantidadRequerida;
     
     @ManyToOne
     @JoinColumn(name = "producto_id")
@@ -41,14 +41,14 @@ public class ProductoIngrediente implements Serializable {
     public ProductoIngrediente() {
     }
 
-    public ProductoIngrediente(Long id, double cantidadRequerida, Producto producto, Ingrediente ingrediente) {
+    public ProductoIngrediente(Long id, Double cantidadRequerida, Producto producto, Ingrediente ingrediente) {
         this.id = id;
         this.cantidadRequerida = cantidadRequerida;
         this.producto = producto;
         this.ingrediente = ingrediente;
     }
 
-    public ProductoIngrediente(double cantidadRequerida, Producto producto, Ingrediente ingrediente) {
+    public ProductoIngrediente(Double cantidadRequerida, Producto producto, Ingrediente ingrediente) {
         this.cantidadRequerida = cantidadRequerida;
         this.producto = producto;
         this.ingrediente = ingrediente;
@@ -60,6 +60,30 @@ public class ProductoIngrediente implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Double getCantidadRequerida() {
+        return cantidadRequerida;
+    }
+
+    public void setCantidadRequerida(Double cantidadRequerida) {
+        this.cantidadRequerida = cantidadRequerida;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+    public Ingrediente getIngrediente() {
+        return ingrediente;
+    }
+
+    public void setIngrediente(Ingrediente ingrediente) {
+        this.ingrediente = ingrediente;
     }
 
     @Override
