@@ -27,12 +27,14 @@ public class Producto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(name = "nombre", nullable = false, length = 200)
+    @Column(name = "nombre", unique = true, nullable = false, length = 200)
     private String nombre;
     @Column(name = "precio", nullable = false)
     private Double precio;
     @Column(name = "tipo", nullable = false, length = 100)
     private String tipo;
+    @Column(name = "estado", nullable = false, length = 100)
+    private String estado;
 
     @OneToMany(mappedBy = "producto")
     private List<ProductoIngrediente> ingredientes;
@@ -43,23 +45,33 @@ public class Producto implements Serializable {
     public Producto() {
     }
 
-    public Producto(Long id, String nombre, Double precio, String tipo, List<ProductoIngrediente> ingredientes, List<ComandaProducto> comandas) {
+    public Producto(Long id, String nombre, Double precio, String tipo, String estado, List<ProductoIngrediente> ingredientes, List<ComandaProducto> comandas) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.tipo = tipo;
+        this.estado = estado;
         this.ingredientes = ingredientes;
         this.comandas = comandas;
     }
 
-    public Producto(String nombre, Double precio, String tipo, List<ProductoIngrediente> ingredientes, List<ComandaProducto> comandas) {
+    public Producto(String nombre, Double precio, String tipo, String estado, List<ProductoIngrediente> ingredientes, List<ComandaProducto> comandas) {
         this.nombre = nombre;
         this.precio = precio;
         this.tipo = tipo;
+        this.estado = estado;
         this.ingredientes = ingredientes;
         this.comandas = comandas;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -130,7 +142,7 @@ public class Producto implements Serializable {
 
     @Override
     public String toString() {
-        return "Producto{" + "id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", tipo=" + tipo + ", ingredientes=" + ingredientes + ", comandas=" + comandas + '}';
+        return "Producto{" + "id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", tipo=" + tipo + ", estado=" + estado + ", ingredientes=" + ingredientes + ", comandas=" + comandas + '}';
     }
 
 }

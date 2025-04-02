@@ -30,7 +30,7 @@ public class Comanda implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "folio", nullable = false, length = 50)
+    @Column(name = "folio", unique = true, nullable = false, length = 50)
     private String folio;
     @Column(name = "estado", nullable = false, length = 50)
     private String estado;
@@ -42,7 +42,7 @@ public class Comanda implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
-    private ClienteFrecuente cliente;
+    private Cliente cliente;
 
     @ManyToOne
     @JoinColumn(name = "mesa_id")
@@ -51,7 +51,7 @@ public class Comanda implements Serializable {
     public Comanda() {
     }
 
-    public Comanda(Long id, String folio, String estado, LocalDateTime fechaYHora, List<ComandaProducto> productos, ClienteFrecuente cliente, Mesa mesa) {
+    public Comanda(Long id, String folio, String estado, LocalDateTime fechaYHora, List<ComandaProducto> productos, Cliente cliente, Mesa mesa) {
         this.id = id;
         this.folio = folio;
         this.estado = estado;
@@ -61,7 +61,7 @@ public class Comanda implements Serializable {
         this.mesa = mesa;
     }
 
-    public Comanda(String folio, String estado, LocalDateTime fechaYHora, List<ComandaProducto> productos, ClienteFrecuente cliente, Mesa mesa) {
+    public Comanda(String folio, String estado, LocalDateTime fechaYHora, List<ComandaProducto> productos, Cliente cliente, Mesa mesa) {
         this.folio = folio;
         this.estado = estado;
         this.fechaYHora = fechaYHora;
@@ -102,11 +102,11 @@ public class Comanda implements Serializable {
         this.productos = productos;
     }
 
-    public ClienteFrecuente getCliente() {
+    public Cliente getCliente() {
         return cliente;
     }
 
-    public void setCliente(ClienteFrecuente cliente) {
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 

@@ -5,17 +5,23 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
+ * @author luis
  * @author daniel
  */
 @Entity
-@Table(name = "Clientes_Frecuentes")
-public class ClienteFrecuente implements Serializable {
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "Clientes")
+public class Cliente implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -34,13 +40,14 @@ public class ClienteFrecuente implements Serializable {
     private String correo;
     @Column(name = "fecha_registro", nullable = false)
     private Date fechaRegistro;
-    @Column(name = "puntos", nullable = false)
-    private Integer puntos;
+    
+    @OneToMany(mappedBy = "cliente")
+    private List<Comanda> comandas;
 
-    public ClienteFrecuente() {
+    public Cliente() {
     }
 
-    public ClienteFrecuente(Long id, String nombre, String apellidoPaterno, String apellidoMaterno, String telefono, String correo, Date fechaRegistro, Integer puntos) {
+    public Cliente(Long id, String nombre, String apellidoPaterno, String apellidoMaterno, String telefono, String correo, Date fechaRegistro, List<Comanda> comandas) {
         this.id = id;
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
@@ -48,17 +55,17 @@ public class ClienteFrecuente implements Serializable {
         this.telefono = telefono;
         this.correo = correo;
         this.fechaRegistro = fechaRegistro;
-        this.puntos = puntos;
+        this.comandas = comandas;
     }
 
-    public ClienteFrecuente(String nombre, String apellidoPaterno, String apellidoMaterno, String telefono, String correo, Date fechaRegistro, Integer puntos) {
+    public Cliente(String nombre, String apellidoPaterno, String apellidoMaterno, String telefono, String correo, Date fechaRegistro, List<Comanda> comandas) {
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
         this.telefono = telefono;
         this.correo = correo;
         this.fechaRegistro = fechaRegistro;
-        this.puntos = puntos;
+        this.comandas = comandas;
     }
     
     public Long getId() {
@@ -116,13 +123,13 @@ public class ClienteFrecuente implements Serializable {
     public void setFechaRegistro(Date fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
-
-    public Integer getPuntos() {
-        return puntos;
+    
+    public List<Comanda> getComandas() {
+        return comandas;
     }
 
-    public void setPuntos(Integer puntos) {
-        this.puntos = puntos;
+    public void setComandas(List<Comanda> comandas) {
+        this.comandas = comandas;
     }
 
     @Override
@@ -135,10 +142,10 @@ public class ClienteFrecuente implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ClienteFrecuente)) {
+        if (!(object instanceof Cliente)) {
             return false;
         }
-        ClienteFrecuente other = (ClienteFrecuente) object;
+        Cliente other = (Cliente) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -147,7 +154,7 @@ public class ClienteFrecuente implements Serializable {
 
     @Override
     public String toString() {
-        return "ClienteFrecuente{" + "id=" + id + ", nombre=" + nombre + ", apellidoPaterno=" + apellidoPaterno + ", apellidoMaterno=" + apellidoMaterno + ", telefono=" + telefono + ", correo=" + correo + ", fechaRegistro=" + fechaRegistro + ", puntos=" + puntos + '}';
+        return "Cliente{" + "id=" + id + ", nombre=" + nombre + ", apellidoPaterno=" + apellidoPaterno + ", apellidoMaterno=" + apellidoMaterno + ", telefono=" + telefono + ", correo=" + correo + ", fechaRegistro=" + fechaRegistro + ", comandas=" + comandas + '}';
     }
-    
+   
 }

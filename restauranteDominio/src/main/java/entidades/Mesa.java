@@ -27,7 +27,7 @@ public class Mesa implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(name = "numero", nullable = false)
+    @Column(name = "numero", unique = true, nullable = false)
     private Integer numero;
 
     @OneToMany(mappedBy = "mesa")
